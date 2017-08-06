@@ -1,0 +1,110 @@
+/* ==COLOR SCHEME===
+clean #A7D2CB
+butter #F2D388
+salmon #C98474
+eggplant #874C62
+charcoal #373737
+*/
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  background-color: #A7D2CB;
+  position: relative;
+}
+
+.container-fluid {
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.brand {
+  color: WhiteSmoke;
+  font-family: 'Pacifico';
+  padding: 0;
+}
+
+.pretty {
+  font-family: 'Pacifico';
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+.header-text{
+  color: #C98474;
+}
+
+.main-content{
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2%;
+  padding-top: 1%;
+  background-color: WhiteSmoke;
+  border-radius: 2%;
+  padding-bottom: 5%;
+}
+
+.content{
+  margin: 3%;
+  padding: 5%;
+  background-color: White;
+  border-radius: 2%;
+}
+
+.row-content{
+  margin-right: 4%;
+  margin-left: 4%;
+  margin-top: 2%;
+}
+
+.float-right{
+  float: right;
+  margin: 2%;
+}
+
+.big {
+  line-height: 150%;
+}
+
+footer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4%;
+  color: #373737;
+}
+
+.fa {
+  padding: 2%;
+}
+
+.fa-paw {
+  padding: 0;
+}
+
+footer .fa-paw{
+  color: WhiteSmoke;
+}
+
+.fa-phone{
+  color: #C98474;
+}
+
+.fa-envelope{
+  color: #C98474;
+}
+
+.fa-envelope:hover{
+  color: #874C62;
+}
+
+.fa-heart {
+  color: #874C62
+}
+
+.fa-coffee {
+  color: #814032;
+}
