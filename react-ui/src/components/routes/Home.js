@@ -13,7 +13,7 @@ const Home = (props) => {
     <div>
 
       <div className="content">
-        <h3 className="pretty">{contentKeys[0]}</h3>
+        <h3 className="pretty text-center">{contentKeys[0]}</h3>
         <div className="row-content">
           <Row className="clearfix">
             <Col sm={4}>
@@ -25,7 +25,7 @@ const Home = (props) => {
                 crop="scale"/>
             </Col>
             <Col sm={8}>
-              <h4 className="text-center big">{props.data[contentKeys[0]]["p"]}</h4>
+              <h4 className="text-center ">{props.data[contentKeys[0]]["p"]}</h4>
             </Col>
           </Row>
         </div>
@@ -35,7 +35,7 @@ const Home = (props) => {
         <h3 className="pretty text-center">{contentKeys[1]}</h3>
         <div className="row-content">
           <Row className="clearfix">
-            <h4 className="text-center big">{props.data[contentKeys[1]]["p"]}</h4>
+            <h4 className="text-center ">{props.data[contentKeys[1]]["p"]}</h4>
           </Row>
         </div>
       </div>
@@ -44,7 +44,7 @@ const Home = (props) => {
         <h3 className="pretty text-center">{contentKeys[2]}</h3>
         <div className="row-content">
           <Row className="clearfix">
-            <h4 className="text-center big">{props.data[contentKeys[1]]["p"]}</h4>
+            <h4 className="text-center ">{props.data[contentKeys[2]]["p"]}</h4>
           </Row>
         </div>
       </div>

@@ -90,7 +90,7 @@ const EditButton = (props) => {
     <div></div> :
     ((modalTitle === "Send Message") ?
       <a href="#" onClick={(e) => { if(e) e.preventDefault(); props.updateState(content); }}>
-        <i className="fa fa-envelope" aria-hidden="true"></i>
+        <i className="fa fa-envelope env" aria-hidden="true"></i>
       </a> :
       ((modalTitle === "Login") ?
         <a href="#" onClick={(e) => { if(e) e.preventDefault(); props.updateState(content); }} ><span className="brand">{"Patty's Pet Pals "}<i className="fa fa-paw" aria-hidden="true"></i></span></a> :

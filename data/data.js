@@ -1,5 +1,5 @@
 
-const blogID = '';
+const blogID = '5988bb5009580a21c8466986';
 
 const data = {
   home: {
@@ -63,14 +63,14 @@ const data = {
         icon: "fa fa-lightbulb-o"
       }
     ],
-    areas: ["Norwest Columbus including zip codes:", "43235, 43017, 43016, 43002, 43220, 43085, 43221, 43214"]
+    "Areas Serviced": ["Norwest Columbus including zip codes:", "43235, 43017, 43016, 43002, 43220, 43085, 43221, 43214"]
   },
   rates: {
     rate: [],
     paragraph: ["Initial visit is information gathering and at no cost to you."]
   },
   contact: {
-    paragraph: ["Want to get in contact with me?", "Whether you have further questions about my services, would like to request proof of certification, or would like to see my resume, I would be happy to hear from you!", "Call me with the provided phone number or click on an", "fa fa-envelope", "to leave a message and I will get back to you as soon as possible.", "Note: No spam or soliciting, please :)"]
+    paragraph: ["Want to get in contact with me?", "Whether you have further questions about my services, would like to request proof of certification, or would like to see my resume, I would be happy to hear from you!", "Call me with the provided phone numbers or click on a", "fa fa-envelope", "icon to leave a message and I will get back to you as soon as possible.", "Note: No spam or soliciting, please  :-)"]
   }
 };
 
@@ -121,6 +121,8 @@ const messageData = {
   }
 };
 
+const notRequired = [];
+
 const initialUser = {
   token: ''
 };
@@ -134,6 +136,11 @@ const initialEdit = {
 const initialMessage = '';
 
 const editData = {
+  title: {
+    type: 'text',
+    placeholder: 'Type of Service',
+    componentClass: 'input'
+  },
   cost: {
     type: 'text',
     placeholder: 'Cost of Service (US Dollars)',
@@ -144,10 +151,32 @@ const editData = {
     placeholder: 'Length of Service',
     componentClass: 'input'
   },
+  description: {
+    type: 'text',
+    placeholder: 'Description',
+    componentClass: 'input'
+  },
+  services: {
+    type: 'other',
+    placeholder: '',
+    componentClass: ''
+  }
 }
 
 const initialRate = data.rates.rate;
 const cloudName = "dhd1eov8v";
+
+const messages = {
+  inputError: "*Fill out required fields.",
+  tokenError: 'You are unauthorized. Sign in to continue.',
+  expError: 'Session expired. Log back in to continue.',
+  phoneError: "Incorrect phone input.",
+  emailError: "Incorrect email input.",
+  authError: "You are not authorized to access this account.",
+  usernameError: 'Username not found.',
+  passError: 'Incorrect password for given username.',
+  messageSent: "Message sent! I will get back to you within 24 business hours. Thank you!"
+}
 
 module.exports = {
   data,
@@ -160,5 +189,7 @@ module.exports = {
   loginData,
   blogID,
   editData,
-  cloudName
+  cloudName,
+  notRequired,
+  messages
 }

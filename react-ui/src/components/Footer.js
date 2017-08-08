@@ -25,15 +25,18 @@ const Footer = (props) => {
 
       <Row className="clearfix">
         <Col sm={6}>
+         <hr />
           <h3 className="pretty">This page was built with</h3>
-          <h3><i className="fa fa-heart" aria-hidden="true"></i> and <i className="fa fa-coffee" aria-hidden="true"></i></h3>
+          <h3><i className="fa fa-heart footer-icon" aria-hidden="true"></i> and <i className="fa fa-coffee footer-icon" aria-hidden="true"></i></h3>
           <h4>by Sarah Heacock</h4>
           <br />
+          <hr />
         </Col>
 
         <Col sm={6}>
+          <hr />
           <h3 className="pretty">Contact Patty by</h3>
-          <h3><i className="fa fa-phone" aria-hidden="true"></i> or
+          <h3><i className="fa fa-phone footer-icon" aria-hidden="true"></i> or
             <EditButton
               user={props.user}
               updateState={props.updateState}
@@ -41,13 +44,14 @@ const Footer = (props) => {
               title="Send Message"
             />
           </h3>
-          <h4>{props.data.rowOne[0]}</h4>
-          <h4>{props.data.rowOne[1]}</h4>
-          <br />
+          <h4>{props.data.rowOne[0]} <br /> {props.data.rowOne[1]}</h4>
+          <hr />
         </Col>
       </Row>
-      <hr />
-      <div>{props.data.rowTwo.map((d, i) => <p key={`${i}rowTwo`}><b>{d}</b></p>)}<h3><i className="fa fa-paw" aria-hidden="true"></i></h3></div>
+
+      <br />
+      <div>{props.data.rowTwo.map((d, i) => <p key={`${i}rowTwo`}><b>{d}</b></p>)}</div>
+      <h3 className='text-center'><i className="fa fa-paw footer-icon" aria-hidden="true"></i></h3>
 
     </footer>
 

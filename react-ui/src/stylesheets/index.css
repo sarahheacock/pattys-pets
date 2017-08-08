@@ -9,9 +9,11 @@ charcoal #373737
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Raleway', sans-serif;
+  font-family: Verdana, Geneva, sans-serif;
+  /*font-family: 'Raleway', sans-serif;*/
   background-color: #A7D2CB;
   position: relative;
+  color: #373737;
 }
 
 .container-fluid {
@@ -28,6 +30,7 @@ body {
 
 .pretty {
   font-family: 'Pacifico';
+  padding: 1%;
 }
 
 a:hover{
@@ -61,14 +64,29 @@ a:hover{
   margin-top: 2%;
 }
 
-.float-right{
-  float: right;
-  margin: 2%;
-}
 
-.big {
+h4 {
   line-height: 150%;
 }
+
+.service{
+  height: 100px;
+  width: 170px;
+  margin-bottom: 5%;
+  margin-left: 2%;
+}
+
+.service i {
+  color: #F2D388;
+}
+
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  height: auto;
+}
+
 
 footer {
   max-width: 900px;
@@ -77,34 +95,19 @@ footer {
   color: #373737;
 }
 
-.fa {
+footer .fa{
   padding: 2%;
 }
 
-.fa-paw {
-  padding: 0;
-}
-
-footer .fa-paw{
-  color: WhiteSmoke;
-}
-
-.fa-phone{
-  color: #C98474;
-}
-
-.fa-envelope{
-  color: #C98474;
-}
-
-.fa-envelope:hover{
+.footer-icon {
   color: #874C62;
 }
 
-.fa-heart {
-  color: #874C62
+
+.env{
+  color: #C98474;
 }
 
-.fa-coffee {
-  color: #814032;
+.env:hover{
+  color: #874C62;
 }

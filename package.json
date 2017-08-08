@@ -5,10 +5,6 @@
   "engines": {
     "node": "6.11.x"
   },
-  "scripts": {
-    "start": "node server",
-    "heroku-postbuild": "cd react-ui/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
-  },
   "cacheDirectories": [
     "node_modules",
     "react-ui/node_modules"
@@ -16,6 +12,7 @@
   "dependencies": {
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
+    "config": "^1.26.1",
     "express": "^4.14.1",
     "jsonwebtoken": "^7.4.2",
     "mongoose": "^4.11.5",
@@ -33,11 +30,15 @@
     "react"
   ],
   "license": "MIT",
-  "devDependencies": {},
-  "bugs": {
-    "url": "https://github.com/mars/heroku-cra-node/issues"
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.5.0"
   },
-  "homepage": "https://github.com/mars/heroku-cra-node#readme",
-  "main": "index.js",
-  "author": ""
+  "author": "",
+  "scripts": {
+    "start": "set NODE_ENV=dev&&node server",
+    "test": "mocha --timeout 10000",
+    "heroku-postbuild": "cd react-ui/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  }
 }
