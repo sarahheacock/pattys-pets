@@ -10,6 +10,7 @@ class EditModal extends React.Component {
     edit: PropTypes.object.isRequired,
     message: PropTypes.string.isRequired,
 
+    putData: PropTypes.func.isRequired,
     postData: PropTypes.func.isRequired,
     deleteData: PropTypes.func.isRequired,
 
@@ -20,9 +21,16 @@ class EditModal extends React.Component {
   onFormChange = (e) => {
 
     let dataObj = {...this.props.edit.dataObj};
-    const name = e.target.name;
+    const nameArr = e.target.name.split('-');
     const value = e.target.value;
-    dataObj[name] = value;
+
+    if(nameArr.length > 1){
+      dataObj[nameArr[0]][nameArr[1]] = !dataObj[nameArr[0]][nameArr[1]];
+    }
+    else {
+      dataObj[nameArr[0]] = value;
+    }
+
 
     this.props.updateState({
       edit: {
@@ -43,6 +51,8 @@ class EditModal extends React.Component {
     else if(title.includes("Delete")){
       editFunc = this.props.deleteData;
     }
+
+    // console.log("editFunc", editFunc);
 
 
     return (

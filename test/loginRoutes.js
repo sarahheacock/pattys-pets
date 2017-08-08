@@ -54,7 +54,7 @@ describe('Admin Login', () => {
     //       console.log(res.body, page);
     //       res.should.have.status(200);
     //       res.body.should.be.a('object');
-    //       res.body.should.have.property('token');
+    //       res.body.should.have.property('user');
     //       done();
     //     });
     //   });

@@ -5,7 +5,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Section from './Section';
 
 const Routes = (props) => {
-  console.log("routeData", props.data);
+
   const routes = (Object.keys(props.data)).map((k) => {
     if(k === "home"){
       return (

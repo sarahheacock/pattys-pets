@@ -34,52 +34,21 @@ describe('Pages', () => {
       .end((err, res) => {
         res.should.have.status(201);
         res.body.should.be.a('object');
-        res.body.rates[0].services.should.eql([
+        res.body.rates[0].services.should.eql(
           {
-            "service": "Pet Sitting",
-            "offered": false
-          },
-          {
-            "service": "Dog Walking",
-            "offered": false
-          },
-          {
-            "service": "Care and feeding",
-            "offered": false
-          },
-          {
-            "service": "Waste pick up and disposal",
-            "offered": false
-          },
-          {
-            "service": "Medication administration",
-            "offered": false
-          },
-          {
-            "service": "Brushing/Combing",
-            "offered": false
-          },
-          {
-            "service": "Transportation",
-            "offered": false
-          },
-          {
-            "service": "House sitting",
-            "offered": false
-          },
-          {
-            "service": "Collect mail",
-            "offered": false
-          },
-          {
-            "service": "Water plants",
-            "offered": false
-          },
-          {
-            "service": "Alter lights and shades",
-            "offered": false
+            "Pet Sitting": true,
+            "Dog Walking": true,
+            "Care and feeding": true,
+            "Waste pick up and disposal": true,
+            "Medication administration": true,
+            "Brushing/Combing": true,
+            "Transportation": true,
+            "House sitting": true,
+            "Collect mail": true,
+            "Water plants": true,
+            "Alter lights and shades": true
           }
-        ]);
+        );
         res.body.should.have.property('username').eql(page.username);
         res.body.should.have.property('password');
         done();
@@ -107,7 +76,8 @@ describe('Pages', () => {
         .send(page)
         .end((err, res) => {
           res.should.have.status(200);
-          res.body.should.be.a('array').length(1);
+          res.body.should.be.a('object');
+          res.body.should.have.property('rate');
           done();
         });
       });
@@ -132,12 +102,10 @@ describe('Pages', () => {
       });
 
       const rate = {
-        "services": [
-          {
-            "offered": false,
-            "service": "Pet Sitting"
-          }
-        ],
+        "services": {
+          "Pet Sitting": true,
+          "Dog Walking": true
+        },
         "description": "Good for...",
         "title": "Pampered Paws",
         "time": "10 minutes",
@@ -150,7 +118,9 @@ describe('Pages', () => {
       .send(rate)
       .end((err, res) => {
         res.should.have.status(201);
-        res.body.should.be.a('array').length(2);
+        res.body.should.be.a('object');
+        res.body.should.have.property('rate');
+        res.body.rate[1].should.have.property('cost').eql("10");
         done();
       });
     });
@@ -161,12 +131,6 @@ describe('Pages', () => {
       });
 
       const invalid = {
-        "services": [
-          {
-            "offered": false,
-            "service": "Pet Sitting"
-          }
-        ],
         "description": "Good for...",
         "title": "Pampered Paws",
         "token": token
@@ -191,7 +155,7 @@ describe('Pages', () => {
       const rate = {
         "services": [
           {
-            "offered": false,
+            "offered": true,
             "service": "Pet Sitting"
           }
         ],
@@ -215,12 +179,10 @@ describe('Pages', () => {
 
     it('should return unauthorized if no token provided', (done) => {
       const rate = {
-        "services": [
-          {
-            "offered": false,
-            "service": "Pet Sitting"
-          }
-        ],
+        "services": {
+          "Pet Sitting": true,
+          "Dog Walking": true
+        },
         "description": "Good for...",
         "title": "Pampered Paws",
         "time": "10 minutes",
@@ -253,18 +215,16 @@ describe('Pages', () => {
     });
 
 
-    it('add rate when all form items are filled', (done) => {
+    it('edit rate when all form items are filled', (done) => {
       const token = jwt.sign({userID: page.userID}, configure.secret, {
         expiresIn: '1d' //expires in one day
       });
 
       const rate = {
-        "services": [
-          {
-            "offered": false,
-            "service": "Pet Sitting"
-          }
-        ],
+        "services": {
+          "Pet Sitting": true,
+          "Dog Walking": true
+        },
         "description": "Good for...",
         "title": "Pampered Paws",
         "time": "10 minutes",
@@ -273,12 +233,13 @@ describe('Pages', () => {
       };
 
       chai.request(server)
-      .put('/page/' + page.id + "/" + page.rates[0]._id)
+      .put('/page/' + page.id + "/" + page.rates[0].id)
       .send(rate)
       .end((err, res) => {
         res.should.have.status(200);
-        res.body.should.be.a('array').length(1);
-        res.body[0].should.have.property("services").length(1);
+        res.body.should.be.a('object');
+        res.body.should.have.property('rate');
+        res.body.rate[0].should.have.property('cost').eql("10");
         done();
       });
     });
@@ -289,12 +250,6 @@ describe('Pages', () => {
       });
 
       const invalid = {
-        "services": [
-          {
-            "offered": false,
-            "service": "Pet Sitting"
-          }
-        ],
         "description": "Good for...",
         "title": "Pampered Paws",
         "token": token
@@ -335,7 +290,9 @@ describe('Pages', () => {
       .delete('/page/' + page.id + "/" + page.rates[0].id + "?token=" + token)
       .end((err, res) => {
         res.should.have.status(200);
-        res.body.should.be.a('array').length(0);
+        res.body.should.be.a('object');
+        res.body.should.have.property('rate')
+        res.body.rate.should.be.a('array').length(0);
         done();
       });
     });

@@ -15,7 +15,6 @@ const Footer = (props) => {
         edit={props.edit}
         message={props.message}
 
-        uploadFile={props.uploadFile}
         putData={props.putData}
         postData={props.postData}
         deleteData={props.deleteData}

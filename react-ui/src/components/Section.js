@@ -6,12 +6,18 @@ import Home from './routes/Home';
 import Services from './routes/Services';
 import Rates from './routes/Rates';
 import Contact from './routes/Contact';
+import EditButton from './buttons/EditButton';
 
 
 const Section = (props) => {
   //EditButton will make button invisible without token
   const editButton = (props.section === "rates") ?
-    <div>Button</div>:
+    <EditButton
+      user={props.user}
+      updateState={props.updateState}
+      dataObj={{}}
+      title="Add"
+    />:
     <div></div>;
 
 
@@ -20,7 +26,7 @@ const Section = (props) => {
     ((props.section === "services") ?
       <Services data={props.data}/> :
       ((props.section === "rates" && props.data.rate.length > 0) ?
-        <Rates data={props.data} user={props.user} message={props.message} updateState={props.updateState}/> :
+        <Rates data={props.data}  user={props.user} updateState={props.updateState}/> :
         ((props.section === "contact") ?
           <Contact data={props.data} user={props.user} updateState={props.updateState}/> :
           <div></div>))))

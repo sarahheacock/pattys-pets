@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
-import { initialMessage, initialEdit, initialUser } from '../../../../data/data';
+// import { Button } from 'react-bootstrap';
+import { initialMessage, initialEdit, initialUser, messages } from '../../../../data/data';
 
 import AlertMessage from './AlertMessage';
 import EditButton from './EditButton';
@@ -20,6 +20,7 @@ class SubmitButtonSet extends React.Component {
 
 
   pop = (e) => {
+    e.preventDefault();
     this.props.updateState({
       edit: initialEdit,
       message: initialMessage
@@ -27,6 +28,7 @@ class SubmitButtonSet extends React.Component {
   }
 
   logout = (e) => {
+    e.preventDefault();
     this.props.updateState({
       edit: initialEdit,
       message: initialMessage,
@@ -36,25 +38,23 @@ class SubmitButtonSet extends React.Component {
 
 
   submit = (e) => {
-    const edit = this.props.edit;
+    e.preventDefault();
 
-    if(this.props.message === ""){ //if there is no error with the forms
-      if(edit.modalTitle === "Delete Content") this.props.editData(edit.url);
-      else this.props.editData(edit.url, edit.dataObj);
-    }
-    else {
-      e.preventDefault();//prevent navLink
-    }
+    const edit = this.props.edit;
+    if(edit.modalTitle.includes("Delete")) this.props.editData(edit.url);
+    else this.props.editData(edit.url, edit.dataObj);
   }
 
 
   render(){
     const edit = this.props.edit;
-    const style = (edit.modalTitle.includes("Delete")) ?
-      "danger":
-      ((edit.modalTitle.includes("Edit")) ?
-        "info":
-        "primary");
+    const style = (edit.modalTitle.includes("Edit")) ?
+      "button orangeButton":
+      ((edit.modalTitle.includes("Add") || edit.modalTitle.includes("Login")) ?
+        "button blueButton":
+        ((edit.modalTitle.includes("Delete")) ?
+          "button redButton":
+          "button"));
 
     return (
       <div className="text-center">
@@ -62,14 +62,14 @@ class SubmitButtonSet extends React.Component {
           message={this.props.message}
         />
         {
-          (this.props.message.includes("Session Expired")) ?
+          (this.props.message !== messages.expError) ?
             <div>
-              <Button className="edit" bsStyle={style} onClick={this.submit}>
-                {edit.modalTitle}
-              </Button>
-              <Button className="edit" onClick={this.pop}>
+              <button className={style} onClick={this.submit}>
+                {edit.modalTitle.replace(' Service', '')}
+              </button>
+              <button className="button" onClick={this.pop}>
                 Cancel
-              </Button>
+              </button>
             </div> :
             <div>
               <EditButton
@@ -77,11 +77,10 @@ class SubmitButtonSet extends React.Component {
                 updateState={this.props.updateState}
                 dataObj={{}}
                 title="Login "
-                length={2}
               />
-              <Button className="edit" onClick={this.logout}>
+              <button className="button" onClick={this.logout}>
                 Close
-              </Button>
+              </button>
             </div>
         }
       </div>

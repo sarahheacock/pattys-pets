@@ -9,8 +9,9 @@ import axios from 'axios';
 
 import AdminReducer from './reducers/admin';
 import './stylesheets/index.css';
+import './stylesheets/buttons.css';
 
-import {initialUser, initialEdit, initialMessage, initialRate} from '../../data/data';
+import {initialUser, initialEdit, initialMessage, initialRate, messages } from '../../data/data';
 //=============================================================\
 
 const initialState = {
@@ -40,7 +41,7 @@ const saveState = (state) => {
 const initial = (localStorage.patty !== undefined) ? JSON.parse(localStorage.patty) : initialState;
 
 const store = createStore(
-  AdminReducer, initial, applyMiddleware(thunk)
+  AdminReducer, {...initial, rate: initialRate, message: initialMessage}, applyMiddleware(thunk)
 );
 
 store.subscribe(() => { saveState(store.getState()); });

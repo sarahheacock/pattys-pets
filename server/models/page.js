@@ -12,12 +12,11 @@ const sortRates = (a, b) => {
 
 const addServices = () => {
   const arr = services[keys[0]].concat(services[keys[1]]);
-  return arr.map((s) => {
-    return {
-      service: s.service,
-      offered: false
-    };
+  let service = {};
+  arr.forEach((s) => {
+    service[s.service] = true;
   });
+  return service;
 }
 
 const makeid = () => {
@@ -36,7 +35,7 @@ const RateSchema = new Schema({
   title: {type: String, default: "Pampered Paws"},
   description: {type: String, default: "Good for..."},
   services: {
-    type: Array,
+    type: Object,
     default: addServices()
   }
 });

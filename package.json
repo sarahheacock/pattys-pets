@@ -12,6 +12,7 @@
   "dependencies": {
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
+    "config": "^1.26.1",
     "express": "^4.14.1",
     "jsonwebtoken": "^7.4.2",
     "mongoose": "^4.11.5",
@@ -36,7 +37,7 @@
   },
   "author": "",
   "scripts": {
-    "start": "node server",
+    "start": "set NODE_ENV=dev&&node server",
     "test": "mocha --timeout 10000",
     "heroku-postbuild": "cd react-ui/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   }

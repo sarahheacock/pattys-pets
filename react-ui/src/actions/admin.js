@@ -1,6 +1,8 @@
 import * as AdminActionTypes from '../actiontypes/admin';
 import axios from 'axios';
 
+import { initialMessage, initialEdit } from '../../../data/data';
+
 export const updateState = (newState) => {
   return {
     type: AdminActionTypes.UPDATE_STATE,
@@ -14,7 +16,7 @@ export const getData = (url) => {
     return axios.get(url)
       .then(response => {
         console.log("response", response.data);
-        dispatch(updateState({ rate: response.data }));
+        dispatch(updateState(response.data));
 
       })
       .catch(error => {
@@ -31,7 +33,7 @@ export const putData = (url, newData) => {
     return axios.put(url, newData)
     .then(response => {
       console.log("response", response.data);
-      dispatch(updateState({ message: "Yay!" }));
+      dispatch(updateState({...response.data, edit: initialEdit, message: initialMessage}));
 
     })
     .catch(error => {
@@ -40,24 +42,24 @@ export const putData = (url, newData) => {
     });
   }
 };
-
 
 
 export const postData = (url, newData) => {
   return (dispatch) => {
 
     return axios.post(url, newData)
-    .then(response => {
-      console.log("response", response.data);
-      dispatch(updateState({ message: "Yay!" }));
+      .then(response => {
+        console.log("response", response.data);
+        dispatch(updateState({...response.data, edit: initialEdit, message: initialMessage}));
 
-    })
-    .catch(error => {
-      console.log("error", error);
-      dispatch(updateState({ message: error.message }));
-    });
+      })
+      .catch(error => {
+        console.log("error", error);
+        dispatch(updateState({ message: error.message }));
+      });
   }
 };
+
 
 export const deleteData = (url) => {
   return (dispatch) => {
@@ -65,7 +67,7 @@ export const deleteData = (url) => {
     return axios.delete(url)
     .then(response => {
       console.log("response", response.data);
-      dispatch(updateState({ message: "Yay!" }));
+      dispatch(updateState({...response.data, edit: initialEdit, message: initialMessage}));
 
     })
     .catch(error => {

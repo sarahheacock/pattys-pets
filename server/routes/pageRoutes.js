@@ -59,7 +59,7 @@ pageRoutes.param("rateID", (req, res, next, id) => {
 //get page
 pageRoutes.get('/:pageID', (req, res, next) => {
   res.status(200);
-  res.json(req.page.rates);
+  res.json({rate: req.page.rates});
 });
 
 //add rate
@@ -72,27 +72,27 @@ pageRoutes.post('/:pageID', mid.authorizeUser, mid.checkEditInput, (req, res, ne
       next(err)
     }
     res.status(201);
-    res.json(page.rates);
+    res.json({rate: page.rates});
   });
 });
 
 //get specific rates
 pageRoutes.get('/:pageID/:rateID', (req, res, next) => {
   res.status(200);
-  res.json(req.rate);
+  res.json({rate: req.rate});
 });
 
 //update rates
 pageRoutes.put('/:pageID/:rateID', mid.authorizeUser, mid.checkEditInput, (req, res, next) => {
   Object.assign(req.rate, req.body);
-  req.page.save((err,result) => {
+  req.page.save((err,page) => {
     if(err){
       err = new Error("Unable to edit rate. Contact Sarah.");
       err.status = 500;
       return next(err);
     }
     res.status(200);
-    res.json(result.rates);
+    res.json({rate: page.rates});
   });
 })
 
@@ -105,7 +105,7 @@ pageRoutes.delete("/:pageID/:rateID", mid.authorizeUser, (req, res) => {
         err.status = 500;
         return next(err);
       }
-      res.json(page.rates);
+      res.json({rate: page.rates});
     });
   });
 });
