@@ -6,11 +6,12 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-const testConfig = require('config'); //we load the db location from the JSON files
-const options = {
-  server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
-  replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } }
-};
+// const testConfig = require('config'); //we load the db location from the JSON files
+const testConfig = require('./configure/config');
+// const options = {
+//   server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
+//   replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } }
+// };
 
 
 const refreshRoutes = express.Router();
@@ -20,7 +21,7 @@ const messageRoutes = require("./routes/messageRoutes");
 
 
 //=====CONFIGURATION=============================
-mongoose.connect(testConfig.DBHost, options); //connect to database
+mongoose.connect(testConfig.DBHost); //connect to database
 // app.set('superSecret', config.secret); //set secret variable
 
 

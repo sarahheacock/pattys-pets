@@ -29,15 +29,14 @@ const Services = (props) => {
         <h3 className="pretty text-center">{keyArr[2]}</h3>
         <div>{areaContent}</div>
       </div>
-        {contentService([keyArr[0])}
-        {contentService([keyArr[1])}
-      </div>
+        <div>{contentService(keyArr[0])}</div>
+        <div>{contentService(keyArr[1])}</div>
     </div>
   );
 }
 
 export default Services;
 
-Services.propsTypes = {
+Services.propTypes = {
   data: PropTypes.object.isRequired
 }

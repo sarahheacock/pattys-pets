@@ -34,26 +34,26 @@ pageRoutes.param("rateID", (req, res, next, id) => {
 
 
 //===================GET SECTIONS================================
-pageRoutes.post('/', (req, res, next) => {
-  let page = new Page(req.body);
-  bcrypt.hash(page.password, 10, (err, hash) => {
-    if (err) {
-      return next(err);
-    }
-    page.password = hash;
-
-    page.save((err, page) => {
-      if(err){
-        err = new Error("Page not created");
-        err.status = 404;
-        return next(err);
-      }
-      res.status(201);
-      res.json(page)
-    });
-
-  });
-})
+// pageRoutes.post('/', (req, res, next) => {
+//   let page = new Page(req.body);
+//   bcrypt.hash(page.password, 10, (err, hash) => {
+//     if (err) {
+//       return next(err);
+//     }
+//     page.password = hash;
+//
+//     page.save((err, page) => {
+//       if(err){
+//         err = new Error("Page not created");
+//         err.status = 404;
+//         return next(err);
+//       }
+//       res.status(201);
+//       res.json(page)
+//     });
+//
+//   });
+// })
 
 
 //get page

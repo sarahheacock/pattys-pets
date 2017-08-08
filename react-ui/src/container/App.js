@@ -36,17 +36,19 @@ class App extends Component {
     const postData = bindActionCreators(AdminActionCreators.postData, dispatch);
     const deleteData = bindActionCreators(AdminActionCreators.deleteData, dispatch);
 
-    const dataContent = {
-      ...data,
-      rates: {
-        ...data.rates,
-        rate: rate
-      }
-    };
+
+    // const dataContent = {
+    //   ...data,
+    //   rates: {
+    //     ...data.rates,
+    //     rate: [...rate]
+    //   }
+    // };
 
     console.log("");
     console.log("user", user);
     console.log("dataContent", data);
+    console.log("rate", rate);
     console.log("message", message);
     console.log("edit", edit);
 
@@ -64,7 +66,13 @@ class App extends Component {
           />
 
           <Routes
-            data={dataContent}
+            data={{
+              ...data,
+              rates: {
+                ...data.rates,
+                rate: [...rate]
+              }
+            }}
             user={user}
             message={message}
 

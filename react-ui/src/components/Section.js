@@ -39,6 +39,7 @@ export default Section;
 Section.propsTypes = {
   section: PropTypes.string.isRequired,
   data: PropTypes.array.isRequired,
+  rate: PropTypes.array.isRequired,
   user: PropTypes.object.isRequired,
   message: PropTypes.string.isRequired,
 

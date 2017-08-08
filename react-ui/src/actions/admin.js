@@ -14,7 +14,7 @@ export const getData = (url) => {
     return axios.get(url)
       .then(response => {
         console.log("response", response.data);
-        dispatch(updateState({ message: "Yay!" }));
+        dispatch(updateState({ rate: response.data }));
 
       })
       .catch(error => {

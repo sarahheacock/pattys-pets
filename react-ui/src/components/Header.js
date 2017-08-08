@@ -16,7 +16,7 @@ class Header extends React.Component {
   }
 
   componentDidMount(){
-    // this.props.getData(`/user/${blogID}`);
+    this.props.getData(`/page/${blogID}`);
   }
 
   logout = (e) => {
