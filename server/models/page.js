@@ -6,6 +6,10 @@ const services = require("../../data/data").data.services;
 const messages = require('../../data/data').messages;
 const keys = Object.keys(services);
 
+const sortRates = (a, b) => {
+  return b.cost - a.cost;
+};
+
 const addServices = () => {
   const arr = services[keys[0]].concat(services[keys[1]]);
   return arr.map((s) => {
@@ -91,23 +95,11 @@ PageSchema.statics.authenticate = (username, password, next) => {
     });
 }
 
-// PageSchema.pre('save', (next) => {
-//   let page = this;
-//   console.log(this);
-//   if(page.password.length <= 16){
-//     bcrypt.hash(page.password, 10, (err, hash) => {
-//       if (err) {
-//         return next(err);
-//       }
-//       page.password = hash;
-//
-//       next();
-//     })
-//   }
-//   else {
-//     next();
-//   }
-// });
+PageSchema.pre('save', (next) => {
+  const page = this;
+  if(page.rates !== undefined) page.rates.sort(sortRates);
+  next();
+});
 
 
 const Page = mongoose.model("Page", PageSchema);

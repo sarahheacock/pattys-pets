@@ -37,14 +37,6 @@ class App extends Component {
     const deleteData = bindActionCreators(AdminActionCreators.deleteData, dispatch);
 
 
-    // const dataContent = {
-    //   ...data,
-    //   rates: {
-    //     ...data.rates,
-    //     rate: [...rate]
-    //   }
-    // };
-
     console.log("");
     console.log("user", user);
     console.log("dataContent", data);

@@ -80,6 +80,20 @@ h4 {
   color: #F2D388;
 }
 
+.rate{
+  width: 250px;
+  margin: 1%;
+  margin-bottom: 5%;
+}
+
+.yes{
+  color: #A7D2CB;
+}
+
+.no{
+  color: #874C62;
+}
+
 .flex-container {
   display: flex;
   flex-flow: row wrap;

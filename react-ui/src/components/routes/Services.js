@@ -5,17 +5,17 @@ const Services = (props) => {
   const keyArr = Object.keys(props.data);
 
   const contentService = (key) => (
-    (props.data[key]).map((s) => (
-      <div className="content">
-        <h3 className="pretty text-center">{key}</h3>
-        <div className="flex-container">
-          <div className="service text-center">
+    <div className="content">
+      <h3 className="pretty text-center">{key}</h3>
+      <div className="flex-container">
+        {(props.data[key]).map((s) => (
+          <div className="service text-center" key={s["service"]}>
             <h4>{s["service"]}</h4>
             <h3><i className={s["icon"]} aria-hidden="true"></i></h3>
           </div>
-        </div>
+        ))}
       </div>
-    ))
+    </div>
   );
 
   const areaContent = (props.data[keyArr[2]]).map((a) => (
